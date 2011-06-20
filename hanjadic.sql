@@ -1,10 +1,12 @@
-CREATE VIRTUAL TABLE `hanjas` USING fts4(
+CREATE VIRTUAL TABLE `hanjas` USING fts3(
   `hanja` text,
   `hangul` text,
   `part_of_speech` text,
   `english` text,
   `sajasongoh` boolean
 );
+
+BEGIN;
 
 INSERT INTO `hanjas` VALUES ('牽 牛 星','견우성','n','Altair',NULL);
 INSERT INTO `hanjas` VALUES ('兩 棲 類','양서류','n','Amphibia',NULL);
@@ -5702,10 +5704,14 @@ INSERT INTO `hanjas` VALUES ('萬 壽 無 疆','만수무강',NULL,'longevity',1
 -- but we want the contents to have no spaces
 update hanjas_content set c0hanja = replace(c0hanja, ' ', '');
 
-CREATE VIRTUAL TABLE `hanja_definition` USING fts4(
+COMMIT;
+
+CREATE VIRTUAL TABLE `hanja_definition` USING fts3(
   `hanjas` text,
   `definition` text,
 );
+
+BEGIN;
 
 INSERT INTO `hanja_definition` VALUES ('甑','시루 증, boiler for steaming rice, pot (17)');
 INSERT INTO `hanja_definition` VALUES ('飋','쓸쓸한 바람 실(22)');
@@ -15464,10 +15470,14 @@ INSERT INTO `hanja_definition` VALUES ('煙','연기 연');
 INSERT INTO `hanja_definition` VALUES ('煜','비칠 욱, 불꽃 욱, 성할 욱');
 INSERT INTO `hanja_definition` VALUES ('煇','지질 훈');
 
-CREATE VIRTUAL TABLE `korean_pronunciation` USING fts4(
+COMMIT;
+
+CREATE VIRTUAL TABLE `korean_pronunciation` USING fts3(
   `hanjas` text,
   `hangul` text
 );
+
+BEGIN;
 
 INSERT INTO `korean_pronunciation` VALUES ( ' 仛 侂 倬 剫 卓 吒 啄 啅 噣 坼 度 托 拆 拓 擢 晫 柝 橐 沰 涿 濁 濯 琢 琸 矺 籜 蘀 託 讬 踔 踱 逴 鐸 度 拓 ' ,'탁');
 INSERT INTO `korean_pronunciation` VALUES ( ' 儭 ' ,'츤');
@@ -15989,10 +15999,14 @@ INSERT INTO `korean_pronunciation` VALUES ( ' 亄 依 倚 偯 儀 儗 冝 凒 �
 INSERT INTO `korean_pronunciation` VALUES ( ' 嗭 ' ,'짓');
 INSERT INTO `korean_pronunciation` VALUES ( ' 便 匥 卞 变 変 弁 忭 扁 抃 籩 編 胼 腁 變 賆 辨 辮 辯 边 辺 邊 釆 駢 騈 骿 鴘 便 ' ,'변');
 
-CREATE VIRTUAL TABLE `radicals` USING fts4(
+COMMIT;
+
+CREATE VIRTUAL TABLE `radicals` USING fts3(
   `radical` text,
   `hanjas` text
 );
+
+BEGIN;
 
 INSERT INTO `radicals` VALUES ('一',' 亜 唖 姶 悪 或 夷 椅 畏 異 遺 井 郁 一 芋 右 窺 丑 云 雲 盈 益 榎 延 汚 央 岡 下 可 夏 寡 河 珂 苛 荷 華 嘩 画 開 碍 垣 劃 隔 岳 橿 且 樺 釜 栢 萱 瓦 寒 干 桓 漢 環 看 緩 還 基 奇 寄 希 棄 稀 貴 騎 儀 宜 犠 義 蟻 誼 議 丘 朽 求 虚 供 彊 興 尭 業 極 桐 倶 具 勲 君 薫 群 郡 恵 慧 兼 券 喧 圏 拳 捲 遣 乎 五 互 伍 吾 悟 梧 碁 語 乞 光 后 宏 巧 恒 晃 更 梗 構 洪 溝 硬 紘 綱 肱 講 購 号 佐 左 査 再 最 塞 妻 才 犀 在 材 財 肴 崎 埼 碕 柵 冊 三 参 惨 珊 蚕 伺 使 司 嗣 屍 師 施 死 至 詞 事 慈 滋 爾 璽 磁 雫 写 遮 若 惹 寿 重 春 症 称 証 象 鉦 上 丈 丞 乗 剰 擾 杖 畳 蒸 慎 晋 榛 真 秦 甚 笥 垂 睡 衰 錘 随 髄 世 征 政 整 正 惜 昔 籍 宣 煎 箭 前 岨 措 狙 疎 祖 租 粗 組 阻 喪 奏 爽 曹 槽 漕 争 糟 葬 送 遭 像 束 速 袖 其 揃 存 唾 堕 惰 楕 体 帯 戴 泰 宅 托 託 諾 但 巽 丹 嘆 坦 担 旦 歎 湛 胆 壇 断 暖 檀 値 窒 昼 苧 貯 丁 庁 暢 町 腸 頂 勅 直 朕 鎮 陳 槻 椿 壷 汀 訂 釘 鼎 迭 典 天 展 殿 澱 砺 凍 唐 塘 東 棟 湯 灯 董 蕩 藤 謄 働 動 同 洞 胴 銅 峠 得 凸 乍 弐 廿 禰 寧 年 念 捻 乃 嚢 濃 膿 農 覗 廃 拝 杯 盃 曝 爆 函 鉢 髪 挽 否 畢 逼 紐 百 評 病 蛭 浜 不 布 怖 普 譜 撫 舞 蕪 副 幅 福 淵 糞 丙 併 兵 塀 柄 並 閉 偏 篇 編 遍 便 鞭 俸 奉 峰 峯 捧 縫 蓬 蜂 豊 鋒 暴 棒 奔 本 鮪 柾 抹 末 万 満 湊 蓑 無 命 免 餅 矢 鑓 佑 優 友 宥 憂 有 祐 郵 雄 予 余 与 誉 預 揚 楊 陽 翼 欄 蘭 吏 侶 了 両 糧 量 倫 輪 令 伶 冷 怜 玲 苓 鈴 零 霊 麗 煉 錬 婁 蝋 論 歪 賄 亙 亘 弌 丐 丕 亊 亞 亳 亶 侑 來 倚 僵 兀 兩 册 冉 冓 冱 剞 剪 匐 卅 卍 厦 叮 咀 哄 哥 唏 唔 喘 嗄 嘸 嚥 囂 囿 圜 坏 堊 堙 墟 壙 壤 壺 壼 壽 竒 妍 娉 婀 媾 嫣 孃 孳 孺 實 寰 專 尹 妛 峺 崋 嵜 崙 崘 巵 帶 廈 廡 廳 弖 彁 彌 徑 忸 恠 怎 恆 恫 惡 惠 慯 慝 憙 懣 戛 戞 扁 拔 抔 拱 拵 掎 搴 搆 舉 攀 數 昊 昜 晉 晞 晝 晤 暄 暘 曁 曄 曩 朞 朮 朿 杤 柯 桎 栫 梺 椏 棊 棗 椪 椣 棆 寨 樓 橢 櫃 檸 欷 欹 歟 殤 沍 浤 涵 淆 淒 淪 湲 湎 滿 滯 澑 濔 瀑 瀰 炳 烝 焉 煖 爰 牾 犲 狃 猗 獸 璢 瑾 瓸 甦 甼 畫 畸 疆 畴 疔 疸 痞 痾 瘍 瘻 盻 眄 瞞 瞶 矗 祠 祗 祓 禪 禮 禳 秉 秡 秣 稱 穰 窘 窶 竡 篝 簑 簔 篳 簍 篶 簣 籥 粤 粡 鬻 絨 綺 綸 緻 縣 縉 縷 繖 罔 罘 翦 翩 聘 胚 隋 腆 膸 與 艚 苒 苴 莓 茉 荐 莖 茣 萓 菫 蒹 蓆 蓴 蔗 蔕 蕘 薑 藪 藉 乕 號 虱 蚩 蚌 蛬 蝨 蝙 螻 蠹 衄 裲 褄 褊 襄 褸 覯 訶 諞 謌 謇 諡 譁 譴 讌 讓 豺 賚 賽 跚 跋 蹇 蹠 蹣 蹕 軆 輊 輌 輳 辷 邇 逕 遘 隨 酊 醋 醢 醴 釀 鈕 錏 鎭 鏤 鑰 閂 閧 陏 陲 霰 饉 饋 騁 騙 騫 髏 髓 髯 鬟 鯑 鵲 鷓 堯 槇 ' );
 INSERT INTO `radicals` VALUES ('｜', ' 亜 唖 逢 悪 以 伊 井 稲 印 引 鵜 丑 渦 焔 艶 押 横 沖 下 果 華 嘩 柿 角 樺 鴨 患 諌 陥 貴 糾 旧 供 叫 業 曲 巾 串 屈 掘 窟 勲 薫 慧 継 兼 嫌 研 謙 遣 碁 候 洪 甲 耕 購 坤 詐 坐 座 挫 再 妻 済 犀 斎 剤 在 榊 崎 埼 碕 作 咋 搾 昨 柵 窄 策 錯 冊 撒 散 珊 刺 嗣 師 獅 児 爾 璽 軸 雫 湿 篠 朱 殊 珠 種 腫 収 州 修 洲 繍 酬 重 粛 出 衝 鍾 乗 剰 伸 申 神 紳 酢 垂 帥 睡 錘 菅 世 瀬 整 斉 惜 昔 籍 拙 撰 選 岨 措 狙 疎 祖 租 粗 組 阻 喪 奏 捜 挿 曹 槽 漕 糟 遭 束 速 袖 存 唾 帯 戴 泰 凧 巽 湛 断 段 値 中 仲 宙 忠 抽 弔 暢 勅 直 陳 槌 追 鎚 壷 紬 剃 弟 悌 梯 逓 鼎 笛 迭 典 展 殿 澱 兎 菟 凍 唐 塘 東 棟 湯 董 蕩 藤 謄 働 動 峠 橡 凸 届 乍 廿 禰 念 捻 乃 嚢 濃 膿 農 拝 杯 矧 曝 爆 伴 判 半 畔 挽 費 眉 畢 紐 評 不 埠 普 譜 撫 舞 蕪 淵 弗 沸 糞 併 塀 弊 並 蔽 瞥 偏 篇 編 遍 便 俸 奉 峰 峯 捧 縫 蓬 蜂 豊 鋒 暴 棒 堀 妹 昧 抹 末 沫 万 満 味 未 魅 岬 無 免 耗 餅 也 鑓 油 幽 悠 柚 由 郵 翼 来 莱 頼 欄 蘭 侶 両 倫 輪 霊 廉 煉 簾 練 錬 婁 蝋 論 歪 丕 个 丱 丼 豫 佛 來 俤 倔 倆 假 儂 兩 冉 冓 冲 剏 剌 剩 勳 匣 卅 丗 卍 吽 呷 呻 咄 哄 喘 喇 嗽 嘸 嘯 坏 垪 堙 墟 壙 壤 妍 娉 媚 媾 嫂 嫩 嬋 嬾 孃 孺 屏 岫 岼 崋 崛 崙 崘 嵋 廡 廸 彈 彌 彿 徠 忸 怎 怫 恆 悚 惠 慊 慟 憖 憚 懣 懶 戰 扁 抔 抻 拌 拂 拱 搜 捶 揀 搴 搆 舉 收 攸 敕 敝 數 斷 曄 曩 朏 朮 朿 柞 柮 棘 棗 椪 椣 棆 寨 樓 飮 歉 洙 涕 渊 淒 淪 溂 溏 澑 濂 濔 瀑 瀟 瀰 瀾 炸 烽 熏 燻 燼 爛 狃 狆 狎 狒 璢 瑕 瑾 畍 畊 疥 痞 瘻 眛 睇 睫 瞞 瞶 矗 祟 祚 禪 禮 禳 秉 秣 稱 穰 穽 窶 竦 笨 笄 筰 筱 篝 篳 簍 簣 簫 籟 籥 糶 絆 絣 綸 綰 緞 縣 縋 縷 繖 繼 罘 翩 耘 耙 耜 耡 耨 聘 胛 胙 胄 胚 胖 脯 腆 胼 舳 艚 苡 苒 茉 茱 菫 萋 葭 葮 蒹 蕀 蕭 薛 藪 藉 藕 藾 乕 蚓 蚌 蚰 蛬 蛛 蝙 螻 蠹 衄 袢 裲 褄 褊 襄 褸 覯 誅 誄 諫 諞 謇 譁 譴 讓 賽 賺 贐 赧 赳 跚 踈 踵 蹇 蹕 躰 軆 輛 輌 輾 辣 迚 迪 邇 迸 遐 遘 鄲 醋 醴 醺 釀 釉 釐 鈕 鉞 銖 錏 鍜 鎭 鏤 鑰 閘 閧 闌 陲 霰 靺 鞣 顆 餠 饉 饋 饌 駲 騁 駢 騙 騫 驥 驤 髏 體 髯 髴 髷 鬨 魎 鮓 鰕 鰊 鰥 鰤 鰰 鱧 鵲 鶇 鶫 黜 鼬 槇 ' ) ; 
@@ -16240,4 +16254,6 @@ INSERT INTO `radicals` VALUES ('鼓', ' 瞽 皷 鼕 ' ) ;
 INSERT INTO `radicals` VALUES ('鼠', ' 鼠 獵 竄 臘 鑞 鬣 鼬 ' ) ; 
 INSERT INTO `radicals` VALUES ('鼻', ' 嚊 嬶 鼾 ' ) ; 
 INSERT INTO `radicals` VALUES ('薺', ' 済 斎 剤 斉 儕 劑 擠 濟 齋 纃 緕 臍 萃 薺 齎 躋 霽 齏 韲 齊 ' ) ; 
-INSERT INTO `radicals` VALUES ('歯', ' 噛 歯 齢 囓 齒 齔 齣 齟 齠 齡 齦 齧 齬 齪 齷 齲 齶 ' ) ; 
+INSERT INTO `radicals` VALUES ('歯', ' 噛 歯 齢 囓 齒 齔 齣 齟 齠 齡 齦 齧 齬 齪 齷 齲 齶 ' ) ;
+
+COMMIT;
