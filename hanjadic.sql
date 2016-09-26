@@ -12110,7 +12110,7 @@ INSERT INTO `hanja_definition` VALUES ('酖','술 즐길 탐, wine with bird poi
 INSERT INTO `hanja_definition` VALUES ('吞','呑과 同字, swallow; absorb, annex, engulf (7)');
 INSERT INTO `hanja_definition` VALUES ('捄','흙파올릴 구, long and curved (10)');
 INSERT INTO `hanja_definition` VALUES ('伴','짝 반, companion, comrade, partner; accompany (7)');
-INSERT INTO `hanja_definition` VALUES ('豫','기쁠 예, 편안할 예, 미리 예, relaxed, comfortable, at ease (16)');
+INSERT INTO `hanja_definition` VALUES ('豫','미리 예, beforehand (16)');
 INSERT INTO `hanja_definition` VALUES ('酗','주정할 후, drunk, to become violent under the influence of alcohol (11)');
 INSERT INTO `hanja_definition` VALUES ('豬','돼지 저, 물이 괼 저, 못이름 저, pig, hog (16)');
 INSERT INTO `hanja_definition` VALUES ('吟','읊을 음, 끙끙거릴 음, 탄식할 음, 턱 끄덕거릴 음, 노래할 음, 말 더듬을 음, 울 음, sing, hum; recite; type of poetry (7)');
